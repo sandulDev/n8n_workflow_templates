@@ -1,0 +1,1317 @@
+{
+  "name": "telegram_example",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -420,
+        229.5
+      ],
+      "id": "40e35b28-31f6-4f30-bdf0-5d75c1002b37",
+      "name": "Telegram Trigger",
+      "webhookId": "d02239c6-8a0a-4dec-97ee-1a894cd4530f",
+      "credentials": {
+        "telegramApi": {
+          "id": "1JO3meQlwGcbYIgf",
+          "name": "sandul_n8n_examples_bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appXHMehLQRWwjYqs",
+          "mode": "list",
+          "cachedResultName": "n8n_test",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblL8UxsGoh8Gb9N2",
+          "mode": "list",
+          "cachedResultName": "questions",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs/tblL8UxsGoh8Gb9N2"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chat_id": "={{ $json.message.chat.id.toString() }}",
+            "first_name": "={{ $json.message.chat.first_name }}",
+            "username": "={{ $json.message.chat.username }}",
+            "status": "in_progress",
+            "last_question": "1"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "username",
+              "displayName": "username",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "answer_1",
+              "displayName": "answer_1",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "answer_2",
+              "displayName": "answer_2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "answer_3",
+              "displayName": "answer_3",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "answer_4",
+              "displayName": "answer_4",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "last_question",
+              "displayName": "last_question",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Created",
+              "displayName": "Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        20,
+        119
+      ],
+      "id": "39389e76-8ff1-479e-abe0-f0acb4ee18ae",
+      "name": "Airtable1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "qkEX2857FziEH9cm",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "Як тебе звати?",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        220,
+        20
+      ],
+      "id": "2e3ea426-c418-479b-b354-3bc340d64cc4",
+      "name": "Telegram1",
+      "webhookId": "f4e40009-aa5d-4e55-8bcb-6735a1bfca37",
+      "credentials": {
+        "telegramApi": {
+          "id": "1JO3meQlwGcbYIgf",
+          "name": "sandul_n8n_examples_bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d685e008-fb12-42ed-90ff-a4f725280efa",
+              "leftValue": "={{ $json.message.text }}",
+              "rightValue": "/start",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -200,
+        229.5
+      ],
+      "id": "149ef689-3fc3-476d-bf5f-dc887290fba2",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appXHMehLQRWwjYqs",
+          "mode": "list",
+          "cachedResultName": "n8n_test",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblL8UxsGoh8Gb9N2",
+          "mode": "list",
+          "cachedResultName": "questions",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs/tblL8UxsGoh8Gb9N2"
+        },
+        "filterByFormula": "={{ $json.message.chat.id }}",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        20,
+        340
+      ],
+      "id": "e4ba14b4-ef8d-46b3-bf74-6c576b38f787",
+      "name": "Airtable2",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "qkEX2857FziEH9cm",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "1. як тебе звати?\n2. скільки тобі років?\n3. в якому місті проживаєш?\n4. чи є у тебе машина?\nt.me/sandul_n8n_examples_bot.\n"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        -280
+      ],
+      "id": "2f1fee74-e093-46d9-801e-6fcb5a7fa768",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.last_question }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "186c5ccc-8334-4086-9b3a-800e79f96eae"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "29d9655f-0aa9-49b5-9313-ab9ee94a1a55",
+                    "leftValue": "={{ $json.last_question }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e9dffe54-c5fd-43e5-b0fc-2d93acf5544b",
+                    "leftValue": "={{ $json.last_question }}",
+                    "rightValue": "3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5100e3ba-c801-49fe-a6d6-9092a95e5837",
+                    "leftValue": "={{ $json.last_question }}",
+                    "rightValue": "4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        240,
+        319
+      ],
+      "id": "9996d5f6-ddb9-4ba6-b3a3-8f47ca9a9dd8",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appXHMehLQRWwjYqs",
+          "mode": "list",
+          "cachedResultName": "n8n_test",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblL8UxsGoh8Gb9N2",
+          "mode": "list",
+          "cachedResultName": "questions",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs/tblL8UxsGoh8Gb9N2"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "answer_1": "={{ $('Telegram Trigger').item.json.message.text }}",
+            "last_question": "2",
+            "chat_id": "={{ $('Telegram Trigger').item.json.message.chat.id.toString() }}"
+          },
+          "matchingColumns": [
+            "chat_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "username",
+              "displayName": "username",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_1",
+              "displayName": "answer_1",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "answer_2",
+              "displayName": "answer_2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_3",
+              "displayName": "answer_3",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_4",
+              "displayName": "answer_4",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "last_question",
+              "displayName": "last_question",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Created",
+              "displayName": "Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        460,
+        40
+      ],
+      "id": "bf8caac5-620c-4113-8628-69599a292ad1",
+      "name": "Airtable3",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "qkEX2857FziEH9cm",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "скільки тобі років?",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        680,
+        40
+      ],
+      "id": "85cc0c85-7b7e-4b02-a71c-8757bef5d0c6",
+      "name": "Telegram2",
+      "webhookId": "f4e40009-aa5d-4e55-8bcb-6735a1bfca37",
+      "credentials": {
+        "telegramApi": {
+          "id": "1JO3meQlwGcbYIgf",
+          "name": "sandul_n8n_examples_bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appXHMehLQRWwjYqs",
+          "mode": "list",
+          "cachedResultName": "n8n_test",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblL8UxsGoh8Gb9N2",
+          "mode": "list",
+          "cachedResultName": "questions",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs/tblL8UxsGoh8Gb9N2"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chat_id": "={{ $('Telegram Trigger').item.json.message.chat.id.toString() }}",
+            "last_question": "3",
+            "answer_2": "={{ $('Telegram Trigger').item.json.message.text }}"
+          },
+          "matchingColumns": [
+            "chat_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "username",
+              "displayName": "username",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_1",
+              "displayName": "answer_1",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_2",
+              "displayName": "answer_2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "answer_3",
+              "displayName": "answer_3",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_4",
+              "displayName": "answer_4",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "last_question",
+              "displayName": "last_question",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Created",
+              "displayName": "Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        460,
+        240
+      ],
+      "id": "0a7173e1-676f-4883-9180-2c5b0a0d85ef",
+      "name": "Airtable4",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "qkEX2857FziEH9cm",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "в якому місті проживаєш?",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        680,
+        240
+      ],
+      "id": "fc02e48d-5b14-4f5b-bda0-a42e079d9125",
+      "name": "Telegram3",
+      "webhookId": "f4e40009-aa5d-4e55-8bcb-6735a1bfca37",
+      "credentials": {
+        "telegramApi": {
+          "id": "1JO3meQlwGcbYIgf",
+          "name": "sandul_n8n_examples_bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appXHMehLQRWwjYqs",
+          "mode": "list",
+          "cachedResultName": "n8n_test",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblL8UxsGoh8Gb9N2",
+          "mode": "list",
+          "cachedResultName": "questions",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs/tblL8UxsGoh8Gb9N2"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chat_id": "={{ $('Telegram Trigger').item.json.message.chat.id.toString() }}",
+            "last_question": "4",
+            "answer_3": "={{ $('Telegram Trigger').item.json.message.text }}"
+          },
+          "matchingColumns": [
+            "chat_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "username",
+              "displayName": "username",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_1",
+              "displayName": "answer_1",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_2",
+              "displayName": "answer_2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_3",
+              "displayName": "answer_3",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "answer_4",
+              "displayName": "answer_4",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "last_question",
+              "displayName": "last_question",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Created",
+              "displayName": "Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        460,
+        440
+      ],
+      "id": "b1881d84-1eb9-48a3-b2e5-a6c5169dbbc8",
+      "name": "Airtable5",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "qkEX2857FziEH9cm",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "чи є у тебе машина?",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        680,
+        440
+      ],
+      "id": "bb81edb0-5f1a-41f0-b91c-97303097fc9d",
+      "name": "Telegram4",
+      "webhookId": "f4e40009-aa5d-4e55-8bcb-6735a1bfca37",
+      "credentials": {
+        "telegramApi": {
+          "id": "1JO3meQlwGcbYIgf",
+          "name": "sandul_n8n_examples_bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appXHMehLQRWwjYqs",
+          "mode": "list",
+          "cachedResultName": "n8n_test",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblL8UxsGoh8Gb9N2",
+          "mode": "list",
+          "cachedResultName": "questions",
+          "cachedResultUrl": "https://airtable.com/appXHMehLQRWwjYqs/tblL8UxsGoh8Gb9N2"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "last_question": "4",
+            "chat_id": "={{ $('Telegram Trigger').item.json.message.chat.id.toString() }}",
+            "answer_4": "={{ $('Telegram Trigger').item.json.message.text }}",
+            "status": "done"
+          },
+          "matchingColumns": [
+            "chat_id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "username",
+              "displayName": "username",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_1",
+              "displayName": "answer_1",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_2",
+              "displayName": "answer_2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_3",
+              "displayName": "answer_3",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "answer_4",
+              "displayName": "answer_4",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "last_question",
+              "displayName": "last_question",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Created",
+              "displayName": "Created",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        460,
+        640
+      ],
+      "id": "cba3fcfb-5140-4b16-8cdd-b0924ca891c6",
+      "name": "Airtable6",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "qkEX2857FziEH9cm",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "Дякую, більше немає питань",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        680,
+        640
+      ],
+      "id": "f108cabd-38d0-414e-ae8d-90332c685f66",
+      "name": "Telegram5",
+      "webhookId": "f4e40009-aa5d-4e55-8bcb-6735a1bfca37",
+      "credentials": {
+        "telegramApi": {
+          "id": "1JO3meQlwGcbYIgf",
+          "name": "sandul_n8n_examples_bot"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable1": {
+      "main": [
+        [
+          {
+            "node": "Telegram1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Airtable1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Airtable2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable2": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Airtable3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Airtable4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Airtable5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Airtable6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable3": {
+      "main": [
+        [
+          {
+            "node": "Telegram2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable4": {
+      "main": [
+        [
+          {
+            "node": "Telegram3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable5": {
+      "main": [
+        [
+          {
+            "node": "Telegram4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable6": {
+      "main": [
+        [
+          {
+            "node": "Telegram5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f25908a3-f9e4-48ed-8ef7-9ff9b466e818",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "fe0bc19aa051f7b65d829110020641543f6f8f5f4ce618b3584d21615f27dce8"
+  },
+  "id": "aMj5JO8V3UaYk0se",
+  "tags": []
+}
